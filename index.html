@@ -278,11 +278,7 @@
         move: { enable: true, speed: 1, direction: "none", out_mode: "out" }
       },
       interactivity: {
-        events: {
-          onhover: { enable: false },
-          onclick: { enable: false },
-          resize: true
-        }
+        events: { onhover: { enable: false }, onclick: { enable: false }, resize: true }
       },
       retina_detect: true
     });
@@ -296,12 +292,14 @@
       });
     });
 
-    // WhatsApp buy button
+    // WhatsApp buy button (includes "$20 Dollars" style)
     document.querySelectorAll('.buy-btn').forEach(button => {
       button.addEventListener('click', () => {
         const product = button.getAttribute('data-product');
         const phone = "8801602291524";
-        const message = encodeURIComponent(`Hi, I want to buy ${product}. Please provide the details.`);
+        const priceElement = button.parentElement.querySelector('.price');
+        const price = priceElement ? priceElement.textContent.trim() : "";
+        const message = encodeURIComponent(`Hi, I want to buy ${product}. ${price} Dollars Please provide the details.`);
         const url = `https://wa.me/${phone}?text=${message}`;
         window.open(url, '_blank');
       });
