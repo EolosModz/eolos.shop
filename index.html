@@ -163,7 +163,6 @@
       font-size: 0.85rem;
       min-width: 100px;
       text-align: center;
-      display: inline-block;
       -webkit-tap-highlight-color: transparent;
       outline: none;
     }
@@ -186,10 +185,13 @@
 
   <!-- Social Icons -->
   <div class="social-icons">
-    <a href="https://www.instagram.com/eolosmodz" target="_blank" class="instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://youtube.com/@eolosxits?si=Zs64cKrcNADnTsfO" target="_blank" class="youtube" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-    <a href="https://whatsapp.com/channel/0029VaoPOnzH5JLuVbN5h20h" target="_blank" class="whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://t.me/eolosOFC" target="_blank" class="telegram" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+    <a href="https://www.instagram.com/eolosmodz" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://youtube.com/@eolosxits?si=Zs64cKrcNADnTsfO" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
+
+    <!-- UPDATED: WhatsApp icon opens new number -->
+    <a href="https://wa.me/8801631329171" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+
+    <a href="https://t.me/eolosOFC" target="_blank" class="telegram"><i class="fab fa-telegram"></i></a>
   </div>
 
   <!-- Android Section -->
@@ -246,7 +248,7 @@
     </div>
   </div>
 
-  <!-- Permanent Access Section -->
+  <!-- Permanent -->
   <h2>PERMANENT ACCESS</h2>
   <div class="scroll-hint">← Swipe or scroll →</div>
   <div class="slider-container">
@@ -264,9 +266,13 @@
     </div>
   </div>
 
-  <!-- Particle.js Script -->
+  <!-- Particle.js -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
   <script>
+    // GLOBAL WhatsApp NUMBER
+    const WHATSAPP_NUMBER = "8801631329171";
+
     particlesJS("particles-js", {
       particles: {
         number: { value: 60, density: { enable: true, value_area: 800 } },
@@ -275,7 +281,7 @@
         opacity: { value: 0.5, random: true },
         size: { value: 3, random: true },
         line_linked: { enable: false },
-        move: { enable: true, speed: 1, direction: "none", out_mode: "out" }
+        move: { enable: true, speed: 1 }
       },
       interactivity: {
         events: { onhover: { enable: false }, onclick: { enable: false }, resize: true }
@@ -283,20 +289,11 @@
       retina_detect: true
     });
 
-    const icons = document.querySelectorAll('.social-icons a');
-    icons.forEach(icon => {
-      icon.addEventListener('click', () => {
-        icons.forEach(i => i.classList.remove('active', 'instagram', 'youtube', 'whatsapp', 'telegram'));
-        const platform = icon.classList[0];
-        icon.classList.add('active', platform);
-      });
-    });
-
-    // WhatsApp buy button (includes "$20 Dollars" style)
+    // Buy Button WhatsApp Redirect
     document.querySelectorAll('.buy-btn').forEach(button => {
       button.addEventListener('click', () => {
         const product = button.getAttribute('data-product');
-        const phone = "8801602291524";
+        const phone = WHATSAPP_NUMBER;
         const priceElement = button.parentElement.querySelector('.price');
         const price = priceElement ? priceElement.textContent.trim() : "";
         const message = encodeURIComponent(`Hi, I want to buy ${product}. ${price} Dollars Please provide the details.`);
